@@ -1,0 +1,192 @@
+{
+    "preguntas": [
+        {
+            "id": 1,
+            "indicación:": "Encuentra el siguiente término en cada una de las siguientes sucesiones.",
+            "subpreguntas": [
+                {
+                    "id": "1a",
+                    "texto": "6,13,20,27,34,__",
+                    "respuesta_correcta": "41"
+                }, 
+                {
+                    "id": "1b",
+                    "texto": "3,9,27,81,243,__",
+                    "respuesta_correcta": "729"
+                },
+                {
+                    "id": "1c",
+                    "texto": "2,3,6,18,108,__",
+                    "respuesta_correcta": "1944"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "indicación:": "Encuentra el siguiente término en cada una de las siguientes sucesiones.", 
+            "subpreguntas": [
+                {
+                    "id": "2a",
+                    "texto": "4/2 (3/4 + 1/2)^2",
+                    "respuesta_correcta": "25/23"
+                },
+                {
+                    "id": "2b",
+                    "texto": "(3/4 - 1/2)^3",
+                    "respuesta_correcta": "1/64"
+                }, 
+                {
+                    "id": "2c",
+                    "texto": "(4/5)/(6/12 + 5/2)^2",
+                    "respuesta_correcta": "4/45"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "indicación:": "Despeja x en las siguientes ecuaciones:", 
+            "subpreguntas": [
+                {
+                    "id": "3a",
+                    "texto": "5X + 2 = 0",
+                    "respuesta_correcta": "25/23"
+                },
+                {
+                    "id": "3b",
+                    "texto": "(3/4 - 1/2)^3",
+                    "respuesta_correcta": "1/64"
+                }, 
+                {
+                    "id": "3c",
+                    "texto": "(4/5)/(6/12 + 5/2)^2",
+                    "respuesta_correcta": "4/45"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "tipo": "opcion_multiple",
+            "enunciado": "¿Cuál de las siguientes expresiones es igual a: (a⁵ × a³)⁴?",
+            "opciones": [
+                "a^193",
+                "a^12",
+                "a^32",
+                "a^60"
+            ],
+            "respuesta_correcta": "a^32"
+        },
+        {
+            "id": 5,
+            "indicación:": "Conteste si la expresión es falsa o verdadera:", 
+            "subpreguntas": [
+                {
+                    "id": "5a",
+                    "texto": "(a+b)^2 = a^2 + b^2",
+                    "opciones": [
+                        "Verdadero",
+                        "Falso"
+                    ],
+                    "respuesta_correcta": "Falso"
+                },
+                {
+                    "id": "5b",
+                    "texto": "(1 + √7)/3 = 1/3 + √7/3",
+                    "opciones": [
+                        "Verdadero",
+                        "Falso"
+                    ],
+                    "respuesta_correcta": "Verdadero"
+                }, 
+                {
+                    "id": "5c",
+                    "texto": "1/√2 = √2/2",
+                    "opciones": [
+                        "Verdadero",
+                        "Falso"
+                    ],
+                    "respuesta_correcta": "Verdadero"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "indicación:": "Cual es el símbolo correspondiente >, < o =:", 
+            "subpreguntas": [
+                {
+                    "id": "6a",
+                    "texto": "8/7 ⃝ 7/8",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": ">"
+                },
+                {
+                    "id": "6b",
+                    "texto": "0.87 ⃝ 7/8",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": "<"
+                }, 
+                {
+                    "id": "6c",
+                    "texto": "-7/8 ⃝ 7/-8",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": "="
+                },
+                {
+                    "id": "6d",
+                    "texto": "8/7 ⃝ 9/8",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": "<"
+                },
+                {
+                    "id": "6e",
+                    "texto": "0.75 ⃝ 3/4",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": "="
+                }, 
+                {
+                    "id": "6f",
+                    "texto": "8/7 ⃝ 42/36",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": "<"
+                },
+                {
+                    "id": "6g",
+                    "texto": "-8/17 ⃝ -6/19",
+                    "opciones": [
+                        ">",
+                        "<",
+                        "="
+                    ],
+                    "respuesta_correcta": ">"
+                }
+            ]
+        },
+        {
+
+        }
+
+    ]
+}
