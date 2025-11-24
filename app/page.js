@@ -1,28 +1,20 @@
 "use client";
 import { useRouter } from "next/navigation";
-
+import { useEffect } from "react";
 export default function HomePage() {
   const router = useRouter();
+    useEffect(() => {
+    router.push("/login"); 
+  }, []);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-blue-100 p-8">
-      <div className="bg-white  text-gray-800 p-8 rounded-xl shadow-md max-w-lg">
-        <h1 className="text-xl font-bold mb-4">Bienvenido, alumn@</h1>
-        <ol className="list-decimal pl-5 space-y-2">
-          <li>Solo tienes una oportunidad para responder el examen.</li>
-          <li>No podrás levantarte de tu lugar una vez iniciado.</li>
-          <li>Presiona el botón de finalizar al terminar.</li>
-          <li>Podrás usar tu hoja de cálculo.</li>
-          <li>Evita hacer ruido.</li>
-        </ol>
-        <button
-          onClick={() => router.push("/exam")}
-          className="mt-6 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Iniciar examen
-        </button>
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="flex flex-row gap-2">
+        <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+        <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+        <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
       </div>
-    </main>
+    </div>
   );
 }
 

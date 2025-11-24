@@ -5,10 +5,10 @@ export default function ProgresoPreguntas({ totalPaginas, paginaActual, onChange
             <button
             key={num}
             onClick={() => onChangePagina(num)}
-            className={`w-8 h-8 rounded-full ${
+            className={`w-8 h-8 rounded-full text-white ${
                 num === paginaActual
-                ? "bg-blue-600 text-white"
-                : "bg-gray-400 text-black"
+                ? "bg-[#4169e1] "
+                : "bg-[#8aa0e0]"
             }`}
             >
             {num}

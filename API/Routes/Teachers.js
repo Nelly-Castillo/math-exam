@@ -1,24 +1,27 @@
+const { verificarToken, verificarRol } =  require("../middleware/auth");
 const express = require("express");
 const controller = require('../controllers/Teachers');
-
 const router = express.Router();
+const initDB = require("../config/db.js");
 
-router.get('/teachers', controller.getData);
+// router.get('/teacher/download', controller.downloadResults);
+router.get("/teachers", async (req, res) => {
+    try {
+        const db = await initDB();
+        const [rows] = await db.query("SELECT * FROM teachers");
+        res.json(rows);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
 
-router.post('/teachers', controller.createData);
+module.exports = router;
 
-router.get('/teacher/:workerId', controller.getTeacher);
-
-router.put('/teacher/:workerId', controller.updateData);
-
-router.delete('/teacher/:workerId', controller.deleteTeacher);
-
-router.get('/teacher/:workerId/students', controller.getTeacherStudents);
-
-router.post('/teacher/:workerId/students', controller.addStudentToTeacher);
-
-router.get('/teacher/:workerId/student/:exp', controller.getTeacherStudentByExp);
-
-router.delete('/teacher/:workerId/student/:exp', controller.removeStudentFromTeacher);
+router.get(
+    "/teacher/download",
+    verificarToken,
+    verificarRol("teacher"),
+    controller.downloadResults
+);
 
 module.exports = router;

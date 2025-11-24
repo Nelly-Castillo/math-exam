@@ -4,6 +4,7 @@ import preguntasData from "../assets/QuestionsDB.json";
 import PreguntaCard from "@/components/preguntaCard";
 import ProgresoPreguntas from "@/components/progresoPreguntas";
 import NavegacionPreguntas from "@/components/navegacionPreguntas";
+import NavBar from "@/components/header";
 
 export default function Examen() {
     const preguntas = preguntasData.preguntas.filter(p => Object.keys(p).length > 0);
@@ -16,23 +17,26 @@ export default function Examen() {
     const preguntasVisibles = preguntas.slice(inicio, fin);
 
     return (
-        <div className="flex flex-col items-center p-6 bg-blue-100">
-        {preguntasVisibles.map((pregunta) => (
-            <PreguntaCard key={pregunta.id} pregunta={pregunta} />
-        ))}
+        <div className="w-full h-full">
+            <NavBar/>
+            <div className="flex flex-col items-center pt-24 p-8 ">
+                {preguntasVisibles.map((pregunta) => (
+                    <PreguntaCard key={pregunta.id} pregunta={pregunta} />
+                ))}
 
-        <ProgresoPreguntas
-            totalPaginas={totalPaginas}
-            paginaActual={paginaActual}
-            onChangePagina={setPaginaActual}
-        />
+                <ProgresoPreguntas
+                    totalPaginas={totalPaginas}
+                    paginaActual={paginaActual}
+                    onChangePagina={setPaginaActual}
+                />
 
-        <NavegacionPreguntas
-            paginaActual={paginaActual}
-            totalPaginas={totalPaginas}
-            onAnterior={() => setPaginaActual(paginaActual - 1)}
-            onSiguiente={() => setPaginaActual(paginaActual + 1)}
-        />
+                <NavegacionPreguntas
+                    paginaActual={paginaActual}
+                    totalPaginas={totalPaginas}
+                    onAnterior={() => setPaginaActual(paginaActual - 1)}
+                    onSiguiente={() => setPaginaActual(paginaActual + 1)}
+                />
+            </div>
         </div>
     );
 }

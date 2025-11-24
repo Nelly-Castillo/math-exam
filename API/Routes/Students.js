@@ -1,23 +1,18 @@
 const express = require("express");
+const { verificarToken, verificarRol } =  require("../middleware/auth");
 const controller = require('../controllers/Students');
-
 const router = express.Router();
 
-router.get('/students', controller.getStudents);
-router.post('/students', controller.createStudent);
+// router.post('/student/save', controller.saveAnswers);
+router.get("/students", (req, res) => {
+    res.send("OK STUDENTS");
+});
 
-router.get('/student/:exp', controller.getStudent);
-router.put('/student/:exp', controller.updateStudent);
-router.patch('/student/:exp', controller.patchStudent);
-router.delete('/student/:exp', controller.deleteStudent);
-
-router.get('/student/:exp/questions', controller.getStudentQuestions);
-router.post('/student/:exp/questions', controller.addStudentQuestions);
-
-router.get('/student/:exp/question/:id', controller.getStudentQuestion);
-router.delete('/student/:exp/question/:id', controller.deleteStudentQuestion);
-
-router.get('/student/:exp/question/:id/answer', controller.getStudentQuestionAnswer);
-router.post('/student/:exp/question/:id/answer', controller.addStudentQuestionAnswer);
+router.post(
+    "/student/save",
+    verificarToken,
+    verificarRol("student"),
+    controller.saveAnswers
+);
 
 module.exports = router;
