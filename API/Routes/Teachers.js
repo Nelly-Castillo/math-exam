@@ -15,7 +15,27 @@ router.get("/teachers", async (req, res) => {
     }
 });
 
-module.exports = router;
+router.get("/teacher/:id/groups", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const db = await initDB();
+
+        const [groups] = await db.query(
+            `SELECT g.id_group, g.group_name
+                FROM groups g
+                JOIN teacher_groups tg ON g.id_group = tg.id_group
+                WHERE tg.id_teacher = ?`,
+            [id]
+        );
+
+        res.json(groups);
+
+    } catch (err) {
+        console.error("Error obteniendo grupos del maestro:", err);
+        res.status(500).json({ error: "Error del servidor" });
+    }
+});
 
 router.get(
     "/teacher/download",

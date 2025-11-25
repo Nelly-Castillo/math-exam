@@ -34,7 +34,7 @@ router.get("/auth/check/:record", async (req, res) => {
 });
 
 router.post("/auth/login/teacher", async (req, res) => {
-    console.log("BODY RECIBIDO:", req.body);
+    // console.log("BODY RECIBIDO:", req.body);
     const { record , password } = req.body;
 
     if (!record || !password) {
@@ -54,7 +54,7 @@ router.post("/auth/login/teacher", async (req, res) => {
             return res.status(401).json({ message: "Expediente o contraseña incorrectos :/." });
         }
         const isMatch = password === teacher.password;
-        console.log("teacher.pass:", teacher.password);
+        // console.log("teacher.pass:", teacher.password);
         // const isMatch = await bcrypt.compare(password, teacher.password);
         
         if (!isMatch) {
@@ -69,7 +69,8 @@ router.post("/auth/login/teacher", async (req, res) => {
         res.status(200).json({ 
             message: "Login exitoso", 
             token: token,
-            name: teacher.name 
+            name: teacher.name,
+            id_teacher: teacher.id_teacher 
         });
 
     } catch (err) {

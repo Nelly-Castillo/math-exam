@@ -73,6 +73,8 @@ export default function Login() {
         // console.log("Respuesta del servidor (data):", data);
         if (res.ok) {
             localStorage.setItem("profName", data.name);
+            localStorage.setItem("idTeacher", data.id_teacher);
+            console.log(data.id_teacher);
             router.push("/teacher");
 
         } else {
@@ -120,7 +122,7 @@ export default function Login() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-[#0E1A47] text-white rounded-lg py-2 mt-4 hover:bg-[#1C2C7D] transition"
+                        className="w-full bg-[#0E1A47] text-white rounded-xl py-2 mt-4 hover:bg-[#1C2C7D] transition"
                     >
                         Continuar
                     </button>
