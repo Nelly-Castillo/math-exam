@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import NavBar from "@/components/header";
-const API = process.env.NEXT_PUBLIC_API_URLL;
 
 export default function Login() {
     const [expediente, setExpediente] = useState("");
@@ -12,12 +11,8 @@ export default function Login() {
     const [nombreAlumno, setNombreAlumno] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(""); // Para mostrar mensajes de error
-    
     const router = useRouter();
 
-    console.log("API:", process.env.NEXT_PUBLIC_API_URL);
-
-    // Función que se ejecuta al enviar el expediente
     const handleVerificarExpediente = async (e) => {
         e.preventDefault(); // Evita la recarga de la página
         setError(""); // Limpiamos errores anteriores
@@ -28,12 +23,12 @@ export default function Login() {
         }
         try {
             // Consulta al backend para verificar el expediente
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/check/${expediente}`, {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"; 
+            const res = await fetch(`${apiUrl}/auth/check/${expediente}`, {
                 cache: "no-store"
             });
             const data = await res.json();
             if (res.ok) {
-                // Si la consulta es exitosa, establece el tipo y pasa a la siguiente vista
                 setTipo(data.tipo); 
             } else {
                 setError(data.message || "Expediente no encontrado.");
@@ -49,11 +44,9 @@ export default function Login() {
             setError("Ingresa tu nombre completo para continuar.");
             return;
         }
-        // Aquí podrías guardar el nombre en el almacenamiento local o en un contexto
-        // localStorage.setItem("studentName", nombreAlumno); 
+        localStorage.setItem("studentName", nombreAlumno);
         router.push("/instructions"); 
     };
-
     // Flujo para PROFESOR (Paso 2a)
     const loginProfesor = async (e) => {
     e.preventDefault();
@@ -63,22 +56,27 @@ export default function Login() {
         setError("Debes ingresar una contraseña.");
         return;
     }
-
+    // console.log("Enviando login de profesor:");
+    // console.log("Expediente enviado:", expediente);
+    // console.log("Password enviado:", password);
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login/teacher`, {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"; 
+        const res = await fetch(`${apiUrl}/auth/login/teacher`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ expediente, password }),
+            body: JSON.stringify({ record: expediente.trim(), password: password.trim()}),
             cache: "no-store"
         });
 
         const data = await res.json();
-
+        // console.log("Respuesta del servidor (status):", res.status);
+        // console.log("Respuesta del servidor (data):", data);
         if (res.ok) {
-            // Login exitoso → ahora sí redirige
+            localStorage.setItem("profName", data.name);
             router.push("/teacher");
+
         } else {
-            setError(data.message || "Contraseña incorrecta.");
+            setError(data.message || data.error ||"Contraseña incorrecta.");
         }
     } catch (error) {
         console.error("Error de login:", error);

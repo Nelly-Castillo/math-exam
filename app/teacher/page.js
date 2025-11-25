@@ -1,7 +1,15 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import NavBar from "@/components/header";
 
-
 export default function DashboardTeacher() {
+    const [profName, setProfName] = useState("");
+    useEffect(() => {
+        const name = localStorage.getItem("profName");
+        if (name) setProfName(name);
+    }, []);
+
     const grupos = ["Grupo 31", "Grupo 32", "Grupo 33"];
 
     return (
@@ -10,7 +18,7 @@ export default function DashboardTeacher() {
         <div className="flex-1 flex items-center justify-center">
             <div className="bg-[#BFD4DE] p-8 rounded-2xl shadow-xl w-[500px]">
             <div className="mb-6">
-                <p className="font-medium">Bienvenido, profesor</p>
+                <p className="text-xl font-semibold">Bienvenido, {profName || "Profesor"}</p>
                 <h2 className="font-medium">Resultados disponibles para descargar</h2>
             </div>
 
